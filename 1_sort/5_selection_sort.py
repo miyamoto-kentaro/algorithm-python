@@ -3,8 +3,6 @@ import random
 import time
 from typing import List
 
-
-
 def time_measurement(sort_func) -> float:
 
     def wrapper(*args,**kwargs):
@@ -16,17 +14,19 @@ def time_measurement(sort_func) -> float:
         return elapsed_time/10
     return wrapper
 
-
 @time_measurement
-def bubble_sort(numbers: List[int]) -> List[int]:
+def selection_sort(numbers: List[int]) -> List[int]:
     len_numbers = len(numbers)
     for i in range(len_numbers):
-        for j in range(len_numbers - i - 1):
-            if numbers[j] > numbers[j + 1]:
-                numbers[j],numbers[j + 1] = numbers[j + 1], numbers[j]
-    
+        min_idx = i
+        for j in range(i + 1, len_numbers):
+            if numbers[min_idx] > numbers[j]:
+                min_idx = j
+        
+        numbers[i],numbers[min_idx] = numbers[min_idx], numbers[i]
     return numbers
 
-if __name__=='__main__':
-    nums = [random.randint(0, 1000) for _ in range(1000)]
-    print(bubble_sort(nums))
+if __name__ == '__main__':
+    import random
+    nums = [random.randint(0, 100000) for _ in range(1000)]
+    print(selection_sort(nums))

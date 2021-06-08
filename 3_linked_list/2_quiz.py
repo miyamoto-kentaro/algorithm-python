@@ -3,6 +3,8 @@ from __future__ import annotations
 
 from typing import Any
 
+import random
+
 
 
 class Node():
@@ -158,6 +160,8 @@ if __name__=='__main__':
     l.append(6)
     l.append(8)
     l.append(9)
+    # for i in range(1000):
+    #     l.append(random.randint(0,100))
     l.print_tree()
     print('#'*50)
     l.reverse_even()
